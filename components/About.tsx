@@ -1,10 +1,15 @@
 import { motion } from "framer-motion"
+import { PageInfo } from "../typings";
+import { urlFor } from '../sanity';
+
 
 import React from 'react'
 
-type Props = {}
+type Props = {
+    pageInfo: PageInfo
+};
 
-const About = ( props: Props ) => {
+const About = ( {pageInfo}: Props ) => {
     return (
         <motion.div
 
@@ -33,7 +38,7 @@ const About = ( props: Props ) => {
 
 
 
-                src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                src={urlFor(pageInfo?.profilePic).url()}
 
                 alt=""
 
@@ -47,7 +52,7 @@ const About = ( props: Props ) => {
                      background
                 </h4>
                 <p className="text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A nostrum dicta et alias vero, sapiente est repudiandae asperiores dolores earum maxime recusandae nam cumque accusamus. Ex cumque qui est illo, itaque mollitia, nostrum delectus atque vero, molestias fugit odio id cupiditate asperiores magni voluptatum impedit nesciunt officia libero? Obcaecati, quisquam tempora! Eveniet blanditiis quidem necessitatibus totam corrupti neque laboriosam explicabo vel quas exercitationem similique ut, perspiciatis tenetur provident, distinctio, adipisci praesentium iusto dolorum dolores officiis illo. Unde omnis laboriosam quia quod, ducimus molestias similique deleniti dicta iusto fuga dolore id aliquid. Laboriosam esse aperiam dolorem dolore ex iusto corporis voluptates.
+                   {pageInfo?.backgroundInformations}
                 </p>
             </div>
 

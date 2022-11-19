@@ -1,12 +1,15 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Project } from '../typings';
+import { urlFor } from '../sanity';
 
+type Props = {
+  projects: Project[];
+};
 
-type Props = {}
+function Projects( {projects }: Props ) {
 
-function Projects( { }: Props ) {
-
-  const projects = [1, 2, 3, 4, 5];
+ 
   return (
     <motion.div
 
@@ -25,7 +28,7 @@ function Projects( { }: Props ) {
 
       <div className="  scrollbar-thin scrollbar-track-gray-40/20 scrollbar-thumb-[#f7AB0A] relative w-full  flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20">
 
-        {projects.map( ( project, i ) => (
+        {projects?.map( ( project, i ) => (
 
 
           // eslint-disable-next-line react/jsx-key
@@ -46,12 +49,13 @@ function Projects( { }: Props ) {
 
              
 
-              src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt=""   />
+              src={urlFor(project?.image).url()}
+              alt=""   />
 
             <div>
-              <h4 className=" text-4xl font-semibold text-center"> <span className=" underline decoration-[#F7AB0A]/50">Case Study {i + 1} of {projects.length}</span> {""}: UPS clone </h4>
+              <h4 className=" text-4xl font-semibold text-center"> <span className=" underline decoration-[#F7AB0A]/50">Case Study {i + 1} of {projects.length}</span> {""}: {project?.title} </h4>
               <p className=" text-lg text-center md:text-left">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente cum dolor qui ducimus, quidem totam mollitia nemo. A dolorem nostrum pariatur iure. Facere, molestiae nesciunt voluptas saepe harum sapiente dolore? Culpa quod cupiditate asperiores inventore! Dolor minima rem porro quibusdam consequuntur alias perspiciatis harum explicabo! Dolorum eaque rem quos cum assumenda maiores aspernatur debitis exercitationem sequi quae
+                {project?.summary}
               </p>
             </div>
 

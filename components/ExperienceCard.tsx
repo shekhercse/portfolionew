@@ -1,10 +1,14 @@
 import React from 'react'
 import { motion } from "framer-motion"
+import { urlFor } from '../sanity'
+import { Experience } from '../typings';
 
 
-type Props = {}
+type Props = {
+    experience: Experience;
+}
 
-function ExperienceCard( { }: Props ) {
+function ExperienceCard( { experience }: Props ) {
     return (
         <article className=" flex flex-col rounded-lg items-center space-y-7 flex-shrink-0  w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden">
             <motion.img
@@ -25,7 +29,7 @@ function ExperienceCard( { }: Props ) {
 
                 className=" w-32 h-32 rounded-full xl:w-[200px] xl:h-[200px] object-cover object-center"
 
-                src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+                src={urlFor( experience?.companyImage ).url()}
                 alt="" />
 
             <div className=" px-0 md:px-10">
@@ -37,43 +41,29 @@ function ExperienceCard( { }: Props ) {
                 </p>
                 <div className=" flex space-x-2 my-2">
 
-                    <img
+                    {experience.technologies.map( ( technology ) => (
 
+                        <img
+                            key={technology._id}
+                            className="h-10 w-10 roundded-full"
+                            // src={urlFor(technology?.image).url()}
+                            alt=""
+                        />
+                    ) )}
 
-                        className=" h-10 w-10 rounded-full "
-                        src=""
-                        alt=""
-                    />
-
-
-                    <img
-
-
-                        className=" h-10 w-10 rounded-full "
-                        src=""
-                        alt=""
-                    />
-
-
-                    <img
-
-
-                        className=" h-10 w-10 rounded-full "
-                        src=""
-                        alt=""
-                    />
-                   
                 </div>
                 <p className=" uppercase py-5 text-gray-300">
-                    Started word.....-- Ended...
+                    {new Date( experience.dateStarted ).toDateString()} - {" "}
+                    {experience.isCurrentlyWorkingHere
+                        ? "Present"
+                        : new Date( experience.dateEnded ).toDateString()}
                 </p>
 
                 <ul className=" list-disc space-y-4 ml-5 text-lg">
-                    <li>Summry Points</li>
-                    <li>Summry Points</li>
-                    <li>Summry Points</li>
-                    <li>Summry Points</li>
-                    <li>Summry Points</li>
+                    {experience.points.map( ( point, i ) => (
+                        <li key={i}>{point}</li>
+                    ) )}
+
                 </ul>
             </div>
         </article>

@@ -3,13 +3,18 @@ import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import BackgroundCircles from './BackgroundCircles';
 import Image from 'next/image';
 import Link from 'next/link';
-type Props = {}
+import { PageInfo } from '../typings';
+import { urlFor } from '../sanity';
 
-function Hero({}: Props) {
+type Props = {
+        pageInfo: PageInfo
+};
+
+function Hero({pageInfo}: Props) {
 
     const [text, count] = useTypewriter({
         words:[
-            "Hi, My Name's Chander Shekher",
+            `Hi, My Name's ${pageInfo?.name}`,
 
             "Guy-who-loves-Coding",
             "<Include-Java Script libraries /"
@@ -21,10 +26,10 @@ function Hero({}: Props) {
   return (
     <div className=' h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden'>  
      <BackgroundCircles/>
-     <img className='relative rounded-full h-32 w-32 mx-auto object-cover' src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" />
+     <img className='relative rounded-full h-32 w-32 mx-auto object-cover' src={urlFor(pageInfo?.heroImage).url()} alt="" />
         <div className='z-20'>
         <h2 className="test-sm uppercase text-gray-500 pb-2 tracking-[15px]">
-            Computer Engineer
+            ${pageInfo?.role}
         </h2>
 
         <h1 className="text-5xl lg:text-6xl font-semibold px-10">
