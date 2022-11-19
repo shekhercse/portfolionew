@@ -20,7 +20,7 @@ import { fetchSocials } from '../utils/fetchSocials'
 
 type Props={
 
-  pageInfo: PageInfo;
+  pageInfo: PageInfo[];
   experiences: Experience[];
   skills: Skill[];
   projects: Project[];
