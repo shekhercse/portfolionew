@@ -17,8 +17,6 @@ function Projects( {projects }: Props ) {
       transition={{ duration: 1.5 }}
       whileInView={{ opacity: 1 }}
 
-
-
       className=" h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0">
 
 
@@ -31,8 +29,10 @@ function Projects( {projects }: Props ) {
         {projects?.map( ( project, i ) => (
 
 
+
           // eslint-disable-next-line react/jsx-key
           <div className=" w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen">
+            key={project._id}
             <motion.img 
 
               initial={{

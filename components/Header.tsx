@@ -30,7 +30,7 @@ function Header( { socials}: Props ) {
 
 
 
-                className=" flex flex-row items-center">
+                className=" flex flex-row bg-inherit rounded-md items-center">
                 {/* Social Icons  */}
                 {socials.map((socials) => (
                 <SocialIcon

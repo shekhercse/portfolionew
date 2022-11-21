@@ -6,11 +6,12 @@ import { Experience } from '../typings';
 
 type Props = {
     experience: Experience;
+   
 }
 
 function ExperienceCard( { experience }: Props ) {
     return (
-        <article className=" flex flex-col rounded-lg items-center space-y-7 flex-shrink-0  w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden">
+        <article className=" flex flex-col rounded-lg items-center space-y-7 flex-shrink-0  w-[500px] md:w-[600px] xl:w-[800px]  snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden">
             <motion.img
 
                 initial={{
@@ -32,9 +33,9 @@ function ExperienceCard( { experience }: Props ) {
                 src={urlFor( experience?.companyImage ).url()}
                 alt="" />
 
-            <div className=" px-0 md:px-10">
+            <div className="  scrollbar scrollbar-track-gray-40/20 scrollbar-thumb-[rgb(247,171,10)]  px-0 md:px-10">
                 <h4 className=" text-4xl font-light">
-                    CEO OF TPKLLCODER
+                    {experience?.company}
                 </h4>
                 <p className=" font-bold text-2xl mt-1 ">
                     TPKLL CODER
@@ -46,7 +47,7 @@ function ExperienceCard( { experience }: Props ) {
                         <img
                             key={technology._id}
                             className="h-10 w-10 roundded-full"
-                            // src={urlFor(technology?.image).url()}
+                             src={urlFor(technology?.image).url()}
                             alt=""
                         />
                     ) )}
@@ -59,7 +60,7 @@ function ExperienceCard( { experience }: Props ) {
                         : new Date( experience.dateEnded ).toDateString()}
                 </p>
 
-                <ul className=" list-disc space-y-4 ml-5 text-lg">
+                <ul className=" space-y-4 ml-5 text-lg">
                     {experience.points.map( ( point, i ) => (
                         <li key={i}>{point}</li>
                     ) )}

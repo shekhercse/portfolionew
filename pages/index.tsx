@@ -20,7 +20,7 @@ import { fetchSocials } from '../utils/fetchSocials'
 
 type Props={
 
-  pageInfo: PageInfo[];
+  pageInfo: PageInfo;
   experiences: Experience[];
   skills: Skill[];
   projects: Project[];
@@ -34,7 +34,7 @@ const  Home=({pageInfo, projects, socials , skills, experiences}:Props) =>{
 
       <div className='bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-40/20 scrollbar-thumb-[rgb(247,171,10)]'>
         <Head>
-          <title>Software Engineering</title>
+          <title>{pageInfo?.name}</title>
           <meta name="description" content="Code beautifully" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
@@ -96,21 +96,26 @@ const  Home=({pageInfo, projects, socials , skills, experiences}:Props) =>{
 };
 export default Home;
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export async function getStaticProps() {
 
-    const pageInfo: PageInfo[] = await fetchPageInfo();
-    const experiences: Experience[] = await fetchExperiences();
-    const skills: Skill[] = await fetchSkills();
-    const projects: Project[] = await fetchProjects();
-    const socials: Social[] = await fetchSocials();
-      
-    return{
-      props:{
-        pageInfo, experiences, skills, projects, socials
-      },
-      revalidate: 10,
-    };
+  const pageInfo: PageInfo[] = await fetchPageInfo()
+  const experiences: Experience[] = await fetchExperiences()
+  const skills: Skill[] = await fetchSkills()
+  const projects: Project[] = await fetchProjects()
+  const socials: Social[] = await fetchSocials()
 
-  
-};
+
+
+
+  return {
+    props: {
+      pageInfo, experiences, skills, projects, socials
+    },
+
+
+    revalidate: 10,
+  }
+
+
+}
 
