@@ -7,9 +7,9 @@ type Props = {
   projects: Project[];
 };
 
-function Projects( {projects }: Props ) {
+function Projects( { projects }: Props ) {
 
- 
+
   return (
     <motion.div
 
@@ -26,46 +26,41 @@ function Projects( {projects }: Props ) {
 
       <div className="  scrollbar-thin scrollbar-track-gray-40/20 scrollbar-thumb-[#f7AB0A] relative w-full  flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20">
 
-        {projects?.map( ( project ,i ) => (
-          
-
-
-          // eslint-disable-next-line react/jsx-key
-          <div className=" w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen">
+        {projects?.map( ( project, i ) => (
            
-            <motion.img 
+          <div  key={project._id} className=" w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen">
+
+            <motion.img
 
               initial={{
-
                 y: -300,
                 opacity: 0,
-
               }}
-
               transition={{ duration: 1.2 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-
               className="h-100 w-100 "
-             
-
-              src={urlFor(project?.image).url()}
-              key= {project._id}
-              alt=""   />
+              src={urlFor( project?.image ).url()}
+          
+              alt="" 
+              />
 
             <div>
-              <h4 className=" text-4xl font-semibold text-center"> <span className=" underline decoration-[#F7AB0A]/50">Case Study {i + 1} of {projects.length}</span> {""}: {project?.title} </h4>
+              <h4 className=" text-4xl font-semibold text-center"> <span className=" underline decoration-[#F7AB0A]/50">
+                Case Study {i + 1} of {projects.length}</span> {""}: {project?.title} 
+              </h4>
 
-              <div className= "flex items-center space-x-2 justify-center">
-                  {project?.technologies.map((technology)=>(
-                    <img className="h-10 w-10 m-5"
+              <div className="flex items-center space-x-2 justify-center">
+                {project?.technologies.map( ( technology ) => (
+                  <img className="h-10 w-10 m-5"
                     key={technology._id}
-                    src={urlFor(technology.image).url()}
+                    src={urlFor( technology.image ).url()}
                     alt=""
-                    />
-                  ))}
+                  />
+                ) )}
               </div>
               <p className=" text-lg text-center md:text-left">
+
                 {project?.summary}
               </p>
             </div>
