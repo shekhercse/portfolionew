@@ -26,13 +26,13 @@ function Projects( {projects }: Props ) {
 
       <div className="  scrollbar-thin scrollbar-track-gray-40/20 scrollbar-thumb-[#f7AB0A] relative w-full  flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20">
 
-        {projects?.map( ( project, i ) => (
-
+        {projects?.map( ( project ,i ) => (
+          
 
 
           // eslint-disable-next-line react/jsx-key
           <div className=" w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen">
-            key={project._id}
+           
             <motion.img 
 
               initial={{
@@ -50,6 +50,7 @@ function Projects( {projects }: Props ) {
              
 
               src={urlFor(project?.image).url()}
+              key= {project._id}
               alt=""   />
 
             <div>
