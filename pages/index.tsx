@@ -7,7 +7,6 @@ import ContactMe from '../components/ContactMe'
 import WorkExperience from '../components/WorkExperience'
 import Projects from '../components/Projects'
 import Link from 'next/link'
-import { GetStaticProps } from 'next'
 import {Experience, PageInfo, Project, Skill, Social} from "../typings"
 import { fetchSkills } from '../utils/fetchSkills'
 import { fetchExperiences } from '../utils/fetchExperiences'
