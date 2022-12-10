@@ -7,7 +7,7 @@ import ContactMe from '../components/ContactMe'
 import WorkExperience from '../components/WorkExperience'
 import Projects from '../components/Projects'
 import Link from 'next/link'
-import { Experience, PageInfo, Project, Skill, Social } from "../typings"
+import { Experience, PageInfo,  Project, Skill, Social } from "../typings"
 import { fetchSkills } from '../utils/fetchSkills'
 import { fetchExperiences } from '../utils/fetchExperiences'
 import { fetchPageInfo } from '../utils/fetchPageinfo'
@@ -98,7 +98,7 @@ export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
 
-  const pageInfo: PageInfo[] = await fetchPageInfo();
+  const pageInfo: PageInfo = await fetchPageInfo();
   const experiences: Experience[] = await fetchExperiences();
   const skills: Skill[] = await fetchSkills();
   const projects: Project[] = await fetchProjects();
